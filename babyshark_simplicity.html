@@ -1,0 +1,25 @@
+"%%[
+  var @Word_Doo, @NewLine, @Main_Words_Per_Verse, @Rowset_of_Main_Words, @Main_Word_Row, @Main_Word, @Common_Verse_Line, @Ending_Verse_Line, @Verse
+  
+  set @Word_Doo = ', doo doo doo doo doo doo'
+  set @NewLine = '<br>'
+  
+  set @Main_Words_Per_Verse = ""Baby shark,Mommy shark,Daddy shark,Grandma shark,Grandpa shark,Let's go hunt,Run away,Safe at last,It's the end""
+  
+  set @Rowset_of_Main_Words = BuildRowsetFromString(@Main_Words_Per_Verse,',')
+
+for @verseCount=1 to 9 do
+  
+  set @Main_Word_Row = Row(@Rowset_of_Main_Words,@verseCount)
+  
+  set @Main_Word = Field(@Main_Word_Row,1)
+  
+  set @Common_Verse_Line = Concat(@Main_Word, @Word_Doo, @NewLine)
+  set @Ending_Verse_Line = Concat(@Main_Word, '!', @NewLine)
+  
+  set @Verse = Concat(@Common_Verse_Line, @Common_Verse_Line, @Common_Verse_Line, @Ending_Verse_Line)
+  
+  output(v(@Verse))
+next
+
+]%%
