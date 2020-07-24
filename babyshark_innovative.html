@@ -1,5 +1,5 @@
-"%%[
+%%[
  set @xml = ""<song><verses><verse>Baby shark</verse><verse>Mommy shark</verse><verse>Daddy shark</verse><verse>Grandma shark</verse><verse>Grandpa shark</verse><verse>Let's go hunt</verse><verse>Run away</verse><verse>Safe at last</verse><verse>It's the end</verse></verses><chorus>doo doo doo doo doo doo</chorus></song>""
  set @xsl = '<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""><xsl:template match=""/song""><xsl:for-each select=""verses/verse""><xsl:variable name=""subject""><xsl:value-of select=""current()""/></xsl:variable><xsl:for-each select=""(//node())[4 >= position()]""><xsl:value-of select=""$subject""/>, <xsl:value-of select=""/song/chorus""/><br/></xsl:for-each><xsl:value-of select=""current()""/>!<br/></xsl:for-each></xsl:template></xsl:stylesheet>'
 ]%%
-%%=TransformXML(@xml,@xsl)=%%"
+%%=TransformXML(@xml,@xsl)=%%
